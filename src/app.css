@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* solve scrolling issue past content
+https://stackoverflow.com/questions/12046315/prevent-overscrolling-of-web-page
+*/
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+}
