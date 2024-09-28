@@ -8,7 +8,7 @@
 
   let code = $state($page.data.code);
 
-  let title = $state("title");
+  let title = $state("UC Application Deadlineasfasdf,s aksldf;ajdk");
   let start = $state(-1);
   let end = $state(-1);
 
