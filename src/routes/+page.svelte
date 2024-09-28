@@ -8,7 +8,7 @@
 
   let code = $state($page.data.code);
 
-  let title = $state("UC Application Deadlineasfasdf,s aksldf;ajdk");
+  let title = $state("UC Application Deadline");
   let start = $state(-1);
   let end = $state(-1);
 
@@ -49,10 +49,16 @@
   <main
     class="light-shadow-glow m-auto h-1/2 w-4/5 rounded-xl border-none bg-gray-50 p-4 shadow-gray-50 sm:w-3/4 md:w-2/3 lg:w-1/2">
     {#if code === ""}
-      <input type="text" bind:value={title} />
-      <input type="checkbox" bind:checked={is_timer} />
+      <div class="flex h-full flex-col justify-between gap-8">
+        <input
+          class="bg-transparent p-4 text-center text-3xl outline-none"
+          type="text"
+          placeholder="title"
+          bind:value={title} />
+        <input type="checkbox" bind:checked={is_timer} />
 
-      <button class="rounded-lg border p-4" onclick={generate}>generate</button>
+        <button class="rounded-lg border p-4" onclick={generate}>generate</button>
+      </div>
     {:else}
       <button class="rounded-lg border p-4" onclick={nav_home}>home?</button>
       <div>
