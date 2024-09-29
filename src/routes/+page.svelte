@@ -72,9 +72,20 @@
               bind:value={title}>
             </textarea>
           </div>
-          <div class="self-end">{title.length}/{title_maxlen}</div>
+          <div class="flex flex-row justify-between">
+            <label class="flex flex-row gap-2">
+              <span>is_timer</span>
+              <input type="checkbox" bind:checked={is_timer} />
+            </label>
+            <div>{title.length}/{title_maxlen}</div>
+          </div>
         </div>
-        <input type="checkbox" bind:checked={is_timer} />
+
+        {#if is_timer}
+          timer stuff
+        {:else}
+          start end stuff
+        {/if}
 
         <button
           class="generate-glow hover:box-shadow block rounded-xl px-1 py-4 text-2xl outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:text-gray-50 hover:outline-none"
