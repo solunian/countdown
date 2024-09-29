@@ -8,7 +8,7 @@
 
   let code = $state($page.data.code);
 
-  let title = $state("UC Application Deadline");
+  let title = $state("");
   let start = $state(-1);
   let end = $state(-1);
 
@@ -28,6 +28,13 @@
     code = "";
   };
 
+  let title_el: HTMLTextAreaElement;
+  const title_input = () => {
+    title_el.style.height = "";
+    title_el.style.height = title_el.scrollHeight + "px";
+  };
+  const title_maxlen = 100;
+
   $effect(() => {
     percentage_bar.style.height = `${percentage * 100}vh`;
 
@@ -45,19 +52,33 @@
   });
 </script>
 
+<svelte:head>
+  <title>{title === "" ? "countdown" : `countdown: ${title}`}</title>
+</svelte:head>
+
 <div class="flex h-screen w-screen justify-center bg-transparent">
   <main
-    class="light-shadow-glow m-auto h-1/2 w-4/5 rounded-xl border-none bg-gray-50 p-4 shadow-gray-50 sm:w-3/4 md:w-2/3 lg:w-1/2">
+    class="light-shadow-glow m-auto h-1/2 w-4/5 rounded-xl border-none bg-gray-50 px-8 pb-7 pt-10 shadow-gray-50 sm:w-3/4 md:w-2/3 lg:w-1/2">
     {#if code === ""}
       <div class="flex h-full flex-col justify-between gap-8">
-        <input
-          class="bg-transparent p-4 text-center text-3xl outline-none"
-          type="text"
-          placeholder="title"
-          bind:value={title} />
+        <div class="flex flex-col gap-1">
+          <div class="border-b-2 border-gray-300 pb-2">
+            <textarea
+              bind:this={title_el}
+              class="align-center block h-10 w-full resize-none overflow-hidden text-wrap bg-transparent text-center text-4xl outline-none"
+              oninput={title_input}
+              placeholder="title"
+              maxlength={title_maxlen}
+              bind:value={title}>
+            </textarea>
+          </div>
+          <div class="self-end">{title.length}/{title_maxlen}</div>
+        </div>
         <input type="checkbox" bind:checked={is_timer} />
 
-        <button class="rounded-lg border p-4" onclick={generate}>generate</button>
+        <button
+          class="generate-glow hover:box-shadow block rounded-xl px-1 py-4 text-2xl outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:text-gray-50 hover:outline-none"
+          onclick={generate}>generate!</button>
       </div>
     {:else}
       <button class="rounded-lg border p-4" onclick={nav_home}>home?</button>
@@ -88,5 +109,9 @@
   /* using gray-950 */
   .dark-shadow-glow {
     box-shadow: 0 0 20px 20px #f9fafb inset;
+  }
+
+  .generate-glow:hover {
+    box-shadow: 0 0 5px 5px #f9fafb inset;
   }
 </style>
