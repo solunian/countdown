@@ -11,6 +11,7 @@
   let title = $state("");
   let start = $state(-1);
   let end = $state(-1);
+  let now = $state(-1);
 
   // tests pleh
   // http://localhost:5173/?code=dGl0bGUsLTEsLTE%3D
@@ -50,6 +51,7 @@
     title = "";
     start = -1;
     end = -1;
+    percentage = 0;
   };
 
   let title_el: HTMLTextAreaElement | undefined = $state();
@@ -63,7 +65,7 @@
     await navigator.clipboard.writeText(window.location.href);
   };
 
-  let countdown = $derived(countdown_text(end - Math.floor(Date.now() / 1000)));
+  let countdown = $derived(countdown_text(end - Math.floor(now / 1000)));
   $effect(() => {
     if (code !== "") {
       let cd = decode(code);
@@ -78,7 +80,8 @@
     let tick: number = -1;
     if (code !== "") {
       tick = setInterval(() => {
-        percentage = (Date.now() - start * 1000) / (1000 * (end - start));
+        now = Date.now();
+        percentage = (now - start * 1000) / (1000 * (end - start));
       });
     }
 

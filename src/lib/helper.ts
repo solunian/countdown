@@ -46,7 +46,7 @@ function countdown_text(time_remaining: number): string {
   const days = Math.floor(time_remaining / day_sec);
   const hrs = Math.floor((time_remaining - days * day_sec) / hr_sec);
   const mins = Math.floor((time_remaining - days * day_sec - hrs * hr_sec) / min_sec);
-  const secs = time_remaining - days * day_sec - hrs * hr_sec - mins * min_sec;
+  const secs = Math.floor(time_remaining % 60);
 
   if (days !== 0) {
     text.push(`${days} ${days === 1 ? "day" : "days"}`);
@@ -58,10 +58,10 @@ function countdown_text(time_remaining: number): string {
     text.push(`${mins} ${mins === 1 ? "minute" : "minutes"}`);
   }
   if (secs !== 0 || days > 0 || hrs > 0 || mins > 0) {
-    text.push(`${mins} ${mins === 1 ? "second" : "seconds"}`);
+    text.push(`${secs} ${secs === 1 ? "second" : "seconds"}`);
   }
   if (time_remaining <= 0) {
-    return "done.";
+    return "time's up.";
   }
 
   return text.join(", ") + " remaining.";
