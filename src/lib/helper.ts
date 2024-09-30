@@ -24,4 +24,15 @@ function decode(code: string): Countdown {
   };
 }
 
-export { type Countdown, encode, decode };
+function decode_date(datestr: string): number {
+  // weird timezone offset. too lazy to think to hard about this.
+  return Math.floor(new Date(datestr).getTime() / 1000 + new Date().getTimezoneOffset() * 60);
+  // return Math.floor(new Date(datestr).getTime() / 1000);
+}
+
+// offset by number of minutes
+function now_offset(min_offset: number): number {
+  return Math.floor(Date.now() / 1000 + min_offset * 60);
+}
+
+export { type Countdown, encode, decode, decode_date, now_offset };

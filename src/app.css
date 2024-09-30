@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,5 +16,5 @@ body {
   height: 100%;
   overflow: hidden;
 
-  @apply text-gray-950;
+  @apply font-sans text-lg text-gray-950;
 }
