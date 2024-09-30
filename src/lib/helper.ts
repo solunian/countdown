@@ -35,4 +35,36 @@ function now_offset(min_offset: number): number {
   return Math.floor(Date.now() / 1000 + min_offset * 60);
 }
 
-export { type Countdown, encode, decode, decode_date, now_offset };
+// time_remaining in seconds
+function countdown_text(time_remaining: number): string {
+  // times in seconds
+  const day_sec = 60 * 60 * 24;
+  const hr_sec = 60 * 60;
+  const min_sec = 60;
+
+  let text = [];
+  const days = Math.floor(time_remaining / day_sec);
+  const hrs = Math.floor((time_remaining - days * day_sec) / hr_sec);
+  const mins = Math.floor((time_remaining - days * day_sec - hrs * hr_sec) / min_sec);
+  const secs = time_remaining - days * day_sec - hrs * hr_sec - mins * min_sec;
+
+  if (days !== 0) {
+    text.push(`${days} ${days === 1 ? "day" : "days"}`);
+  }
+  if (hrs !== 0 || days > 0) {
+    text.push(`${hrs} ${hrs === 1 ? "hour" : "hours"}`);
+  }
+  if (mins !== 0 || days > 0 || hrs > 0) {
+    text.push(`${mins} ${mins === 1 ? "minute" : "minutes"}`);
+  }
+  if (secs !== 0 || days > 0 || hrs > 0 || mins > 0) {
+    text.push(`${mins} ${mins === 1 ? "second" : "seconds"}`);
+  }
+  if (time_remaining <= 0) {
+    return "done.";
+  }
+
+  return text.join(", ") + " remaining.";
+}
+
+export { type Countdown, encode, decode, decode_date, now_offset, countdown_text };
