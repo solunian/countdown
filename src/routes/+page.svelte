@@ -98,7 +98,8 @@
 </script>
 
 <svelte:head>
-  <title>{title === "" ? "countdown" : `countdown: ${title}`}</title>
+  <title
+    >{title === "" ? "countdown" : `(${Math.floor(percentage * 100)}%) countdown: ${title}`}</title>
 </svelte:head>
 
 <div class="flex h-screen w-screen justify-center bg-transparent">
@@ -149,14 +150,14 @@
 
         <button
           data-sveltekit-reload
-          class="generate-glow hover:box-shadow block rounded-xl px-1 py-4 text-2xl outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:text-gray-50 hover:outline-none"
+          class="generate-glow hover:box-shadow block rounded-xl px-1 py-4 text-2xl outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:text-gray-50 hover:outline-none focus:bg-gray-950 focus:text-gray-50 focus:outline-none"
           onclick={generate}>generate!</button>
       </div>
     {:else}
       <div class="flex flex-col gap-4">
         <div class="flex flex-row justify-between">
           <button
-            class="generate-glow rounded-xl stroke-gray-950 p-3 outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:stroke-gray-50 hover:outline-none"
+            class="generate-glow rounded-xl stroke-gray-950 p-3 outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:stroke-gray-50 hover:outline-none focus:bg-gray-950 focus:stroke-gray-50 focus:outline-none"
             aria-label="back"
             onclick={nav_home}
             ><svg
@@ -173,7 +174,7 @@
           </button>
           <span class="flex flex-row gap-3">
             <button
-              class="generate-glow rounded-xl stroke-gray-950 p-3 outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:stroke-gray-50 hover:outline-none"
+              class="generate-glow rounded-xl stroke-gray-950 p-3 outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:stroke-gray-50 hover:outline-none focus:bg-gray-950 focus:stroke-gray-50 focus:outline-none"
               aria-label="share"
               onclick={share_button_onclick}
               ><svg
@@ -188,9 +189,13 @@
                   d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
               </svg>
             </button>
-            <a href="https://github.com/solunian/countdown" aria-label="github" target="_blank">
+            <a
+              href="https://github.com/solunian/countdown"
+              aria-label="github"
+              target="_blank"
+              tabindex="-1">
               <button
-                class="generate-glow rounded-xl stroke-gray-950 p-3 outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:stroke-gray-50 hover:outline-none"
+                class="generate-glow rounded-xl stroke-gray-950 p-3 outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:stroke-gray-50 hover:outline-none focus:bg-gray-950 focus:stroke-gray-50 focus:outline-none"
                 aria-label="code"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -247,6 +252,9 @@
   }
 
   .generate-glow:hover {
+    box-shadow: 0 0 5px 5px #f9fafb inset;
+  }
+  .generate-glow:focus {
     box-shadow: 0 0 5px 5px #f9fafb inset;
   }
 </style>
