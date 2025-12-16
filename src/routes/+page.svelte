@@ -6,36 +6,24 @@
   import { countdown_text } from "$lib/helper";
   import type { PageProps } from "./$types";
 
-  let percentage = $state(0);
-  let percentage_bar: HTMLDivElement;
-
   let { data }: PageProps = $props();
 
-  // tests pleh
-  // http://localhost:5173/?code=dGl0bGUsLTEsLTE%3D
-  // http://localhost:5173/?code=dGl0bGUsLTEsLTEwMDA%3D
+  let now = $derived(data.now);
+  let percentage = $derived((now - data.start * 1000) / (1000 * (data.end - data.start)));
+  let percentage_bar: HTMLDivElement;
 
-  let now = $state(-1);
-
-  const nav_back = () => {
-    goto("/create");
-  };
-
-  const copy_to_clipboard = async () => {
-    await navigator.clipboard.writeText(window.location.href);
-  };
-
+  // text for countdown
   let countdown = $derived(countdown_text(data.end - Math.floor(now / 1000)));
+
   $effect(() => {
+    // adjusting width of bar according to percentage
     if (percentage_bar !== undefined) {
       percentage_bar.style.width = `${percentage * 100}%`;
     }
 
+    // ticking for updating percentage
     let tick: number = -1;
-    tick = setInterval(() => {
-      now = Date.now();
-      percentage = (now - data.start * 1000) / (1000 * (data.end - data.start));
-    });
+    tick = setInterval(() => (now = Date.now()));
 
     if (percentage >= 1) {
       percentage = 1;
@@ -47,6 +35,15 @@
       clearInterval(tick);
     };
   });
+
+  // button callbacks
+  const nav_back = () => {
+    goto("/create");
+  };
+
+  const copy_to_clipboard = async () => {
+    await navigator.clipboard.writeText(window.location.href);
+  };
 </script>
 
 <svelte:head>
