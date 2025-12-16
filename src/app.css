@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
 
 /* solve scrolling issue past content
 https://stackoverflow.com/questions/12046315/prevent-overscrolling-of-web-page
@@ -15,6 +14,26 @@ html {
 body {
   height: 100%;
   overflow: hidden;
+  font-family: Questrial, sans-serif;
 
-  @apply font-sans text-lg text-gray-950;
+  @apply text-lg text-gray-950;
+}
+
+/* using gray-950 */
+.dark-shadow-glow {
+  box-shadow: 0 0 20px 20px #f9fafb inset;
+}
+
+/* using gray-50 */
+.light-shadow-glow {
+  box-shadow:
+    0 0 20px 0 #f9fafb,
+    0 0 20px 0 #f9fafb;
+}
+
+.generate-glow:hover {
+  box-shadow: 0 0 5px 5px #f9fafb inset;
+}
+.generate-glow:focus {
+  box-shadow: 0 0 5px 5px #f9fafb inset;
 }
