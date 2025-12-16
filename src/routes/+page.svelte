@@ -78,7 +78,13 @@
     </span>
   </div>
 
-  <div class="w-full overflow-hidden rounded bg-gray-300">
-    <div bind:this={percentage_bar} class="h-2 w-0 rounded bg-gray-950"></div>
+  <div class="space-y-2">
+    <!-- progress bar -->
+    <div class="w-full overflow-hidden rounded bg-gray-300">
+      <div bind:this={percentage_bar} class="h-2 w-0 rounded bg-gray-950"></div>
+    </div>
+
+    <!-- percentage thing -->
+    <div class="text-center">{(percentage * 100).toFixed(1)}%</div>
   </div>
 </div>
