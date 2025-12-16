@@ -8,6 +8,6 @@ export const load: PageLoad = ({ url }) => {
   if (code === null || code.length === 0) {
     redirect(307, "/create");
   } else {
-    return { ...decode(code) };
+    return { ...decode(code), now: Date.now() };
   }
 };
