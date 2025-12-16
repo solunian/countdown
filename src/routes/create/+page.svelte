@@ -16,7 +16,7 @@
   let end_input_val: string = $state("");
   let minutes: number | undefined = $state();
 
-  const generate = () => {
+  const generate_code = () => {
     let start = -1;
     let end = -1;
 
@@ -83,6 +83,6 @@
   {/if}
 
   <button
-    class="generate-glow hover:box-shadow block rounded-xl px-1 py-4 text-2xl outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:text-gray-50 hover:outline-none focus:bg-gray-950 focus:text-gray-50 focus:outline-none"
-    onclick={generate}>generate!</button>
+    class="generate-glow hover:box-shadow block rounded-xl px-1 py-4 text-2xl outline-2 outline-gray-300 transition hover:bg-gray-950 hover:text-gray-50 hover:outline-none focus:bg-gray-950 focus:text-gray-50 focus:outline-none"
+    onclick={generate_code}>generate!</button>
 </div>
