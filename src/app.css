@@ -18,3 +18,22 @@ body {
 
   @apply font-sans text-lg text-gray-950;
 }
+
+/* using gray-950 */
+.dark-shadow-glow {
+  box-shadow: 0 0 20px 20px #f9fafb inset;
+}
+
+/* using gray-50 */
+.light-shadow-glow {
+  box-shadow:
+    0 0 20px 0 #f9fafb,
+    0 0 20px 0 #f9fafb;
+}
+
+.generate-glow:hover {
+  box-shadow: 0 0 5px 5px #f9fafb inset;
+}
+.generate-glow:focus {
+  box-shadow: 0 0 5px 5px #f9fafb inset;
+}
