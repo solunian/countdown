@@ -9,8 +9,7 @@
 
 <div class="flex h-screen w-screen justify-center bg-transparent">
   <main
-      class="light-shadow-glow min-h-1/2 m-auto w-4/5 rounded-xl border-none bg-gray-50 px-8 py-7 shadow-gray-50 sm:w-3/4 md:w-2/3 lg:w-1/2">
-      {@render children()}
-    </main>
+    class="light-shadow-glow m-auto w-4/5 rounded-xl border-none bg-gray-50 px-8 py-7 shadow-gray-50 sm:w-3/4 md:w-2/3 lg:w-1/2">
+    {@render children()}
+  </main>
 </div>
-

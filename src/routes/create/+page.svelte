@@ -15,7 +15,7 @@
   let start_input_val: string = $state("");
   let end_input_val: string = $state("");
   let minutes: number | undefined = $state();
-  
+
   const generate = () => {
     let start = -1;
     let end = -1;
@@ -42,14 +42,12 @@
   };
 </script>
 
-
-  
 <div class="mt-3 flex h-full flex-col justify-between gap-8">
   <div class="flex flex-col gap-1">
     <div class="border-b-2 border-gray-300 pb-2">
       <textarea
         bind:this={title_el}
-        class="align-center block h-10 w-full resize-none overflow-hidden text-wrap bg-transparent text-center text-4xl outline-none"
+        class="align-center block h-10 w-full resize-none overflow-hidden bg-transparent text-center text-4xl text-wrap outline-none"
         oninput={title_input}
         placeholder="title"
         maxlength={title_maxlen}
@@ -73,13 +71,11 @@
       bind:value={minutes} />
   {:else}
     <div class="flex flex-col justify-around gap-2 text-xl sm:flex-row md:text-2xl">
-      <label
-        class="flex flex-col items-center gap-1 rounded-lg border-2 border-gray-300 px-4 py-2">
+      <label class="flex flex-col items-center gap-1 rounded-lg border-2 border-gray-300 px-4 py-2">
         <h2>start</h2>
         <input class="bg-transparent outline-none" type="date" bind:value={start_input_val} />
       </label>
-      <label
-        class="flex flex-col items-center gap-1 rounded-lg border-2 border-gray-300 px-4 py-2">
+      <label class="flex flex-col items-center gap-1 rounded-lg border-2 border-gray-300 px-4 py-2">
         <h2>end</h2>
         <input class="bg-transparent outline-none" type="date" bind:value={end_input_val} />
       </label>

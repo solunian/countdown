@@ -51,36 +51,34 @@
 
 <svelte:head>
   <title
-    >{data.title === "" ? "countdown" : `(${Math.floor(percentage * 100)}%) countdown: ${data.title}`}</title>
+    >{data.title === ""
+      ? "countdown"
+      : `(${Math.floor(percentage * 100)}%) countdown: ${data.title}`}</title>
 </svelte:head>
 
+<div class="flex flex-col gap-4">
+  <div class="flex flex-row justify-between">
+    <BackButton onclick={nav_back} />
+    <span class="flex flex-row gap-3">
+      <ShareButton onclick={copy_to_clipboard} />
+      <GithubButton />
+    </span>
+  </div>
 
-<main>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-row justify-between">
-        <BackButton onclick={nav_back}/>
-        <span class="flex flex-row gap-3">
-          <ShareButton onclick={copy_to_clipboard}/>
-          <GithubButton/>
-        </span>
-      </div>
+  <div class="text-center text-5xl">{data.title}</div>
+  <div class="text-center">{countdown}</div>
+  <div class="flex flex-row justify-between">
+    <span class="flex flex-col items-center">
+      <div>{new Date(data.start * 1000).toDateString()}</div>
+      <div>{new Date(data.start * 1000).toLocaleTimeString()}</div>
+    </span>
+    <span class="flex flex-col items-center">
+      <div>{new Date(data.end * 1000).toDateString()}</div>
+      <div>{new Date(data.end * 1000).toLocaleTimeString()}</div>
+    </span>
+  </div>
 
-      <div class="text-center text-5xl">{data.title}</div>
-      <div class="text-center">{countdown}</div>
-      <div class="flex flex-row justify-between">
-        <span class="flex flex-col items-center">
-          <div>{new Date(data.start * 1000).toDateString()}</div>
-          <div>{new Date(data.start * 1000).toLocaleTimeString()}</div>
-        </span>
-        <span class="flex flex-col items-center">
-          <div>{new Date(data.end * 1000).toDateString()}</div>
-          <div>{new Date(data.end * 1000).toLocaleTimeString()}</div>
-        </span>
-      </div>
-
-      <div class="w-full rounded bg-gray-300 overflow-hidden">
-        <div bind:this={percentage_bar} class="h-2 w-0 rounded bg-gray-950"></div>
-      </div>
-    </div>
-</main>
-
+  <div class="w-full overflow-hidden rounded bg-gray-300">
+    <div bind:this={percentage_bar} class="h-2 w-0 rounded bg-gray-950"></div>
+  </div>
+</div>
