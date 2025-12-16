@@ -42,6 +42,10 @@
   };
 </script>
 
+<svelte:head>
+  <title>countdown: create</title>
+</svelte:head>
+
 <div class="mt-3 flex h-full flex-col justify-between gap-8">
   <div class="flex flex-col gap-1">
     <div class="border-b-2 border-gray-300 pb-2">
