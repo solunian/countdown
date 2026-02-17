@@ -3,7 +3,7 @@
 </script>
 
 <button
-  class="generate-glow rounded-xl stroke-gray-950 p-3 outline outline-2 outline-gray-300 transition hover:bg-gray-950 hover:stroke-gray-50 hover:outline-none focus:bg-gray-950 focus:stroke-gray-50 focus:outline-none"
+  class="generate-glow rounded-xl stroke-gray-950 p-3 outline-2 outline-gray-300 transition hover:bg-gray-950 hover:stroke-gray-50 hover:outline-none focus:bg-gray-950 focus:stroke-gray-50 focus:outline-none"
   aria-label="share"
   {onclick}
   ><svg

@@ -36,11 +36,6 @@
     };
   });
 
-  // button callbacks
-  const nav_back = () => {
-    goto("/create");
-  };
-
   const copy_to_clipboard = async () => {
     await navigator.clipboard.writeText(window.location.href);
   };
@@ -55,7 +50,7 @@
 
 <div class="flex flex-col gap-4">
   <div class="flex flex-row justify-between">
-    <BackButton onclick={nav_back} />
+    <BackButton />
     <span class="flex flex-row gap-3">
       <ShareButton onclick={copy_to_clipboard} />
       <GithubButton />
