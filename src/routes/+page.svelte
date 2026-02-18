@@ -45,7 +45,7 @@
   <title
     >{data.title === ""
       ? "countdown"
-      : `(${Math.floor(percentage * 100)}%) countdown: ${data.title}`}</title>
+      : `(${Math.trunc(percentage * 100)}%) countdown: ${data.title}`}</title>
 </svelte:head>
 
 <div class="flex flex-col gap-4">
@@ -77,6 +77,6 @@
     </div>
 
     <!-- percentage thing -->
-    <div class="text-center">{(percentage * 100).toFixed(1)}%</div>
+    <div class="text-center">{(Math.trunc(percentage * 10000) / 100).toFixed(2)}%</div>
   </div>
 </div>
